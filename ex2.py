@@ -26,14 +26,14 @@ class Query:
 
     def query(self, granularity, group_by_app):
         log_files = self.log_files()
-        resut = []
+        result = []
         for file in log_files:
             query = get_query(file, self.user, group_by_app, granularity)
             resut.extend(query)
-        return resut
+        return result
 
     def __str__(self):
-        return f"Query resut for: User: {self.user}, from_datetime: {self.from_datetime}, to_datetime: {self.to_datetime}"
+        return f"Query result for: User: {self.user}, from_datetime: {self.from_datetime}, to_datetime: {self.to_datetime}"
 
 
 def get_log_files(log_folder, from_datetime, to_datetime):
