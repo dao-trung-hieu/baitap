@@ -1,0 +1,17 @@
+user1,app1,device1
+user1,app1,device2
+user1,app1,device3
+user1,app1,device7
+user1,app2,device1
+user1,app2,device2
+user1,app2,device3
+user1,app2,device7
+user2,app1,device1
+user2,app1,device3
+user2,app1,device5
+user2,app4,device1
+user2,app4,device3
+user2,app4,device5
+user4,app5,device7
+user9,app2,device8
+user9,app7,device8

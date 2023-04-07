@@ -1,0 +1,85 @@
+Python Exercises_v2
+The aim of this exercize is to make a Python script that can effiently query large files and aggregate the results.
+Assume that there is a directory called logs, inside you can find files like the following:
+/logs/2022-01-xx.log.csv
+/logs/2022-01-01.log.csv
+/logs/2022-01-02.log.csv
+/logs/2022-01-03.log.csv
+Description for file: /logs/2022-01-01.log.csv
+timestamp user UInt64 app UInt64 metric1 UInt64 ... metricX UInt64
+2018-01-01 00:00:00 user1 app1 50.000 70.000
+2018-01-01 00:30:00 user1 app1 45.000 80.000
+...(+44 time intervals)
+2018-01-01 23:00:00 user1 app1 51.000 55.000
+2018-01-01 23:30:00 user1 app1 53.000 85.000
+2018-01-01 00:00:00 user1 app2 50.000 70.000
+2018-01-01 00:30:00 user1 app2 45.000 80.000
+...(+44 time intervals)
+2018-01-01 23:00:00 user1 app2 51.000 55.000
+2018-01-01 23:30:00 user1 app2 53.000 85.000
+2018-01-01 00:00:00 user2 app1 50.000 70.000
+2018-01-01 00:30:00 user2 app1 45.000 80.000
+...(+44 time intervals)
+2018-01-01 23:00:00 user2 app1 51.000 55.000
+2018-01-01 23:30:00 user2 app1 53.000 85.000
+2018-01-01 00:00:00 user2 app2 50.000 70.000
+2018-01-01 00:30:00 user2 app2 45.000 80.000
+...(+44 time intervals)
+2018-01-01 23:00:00 user2 app2 51.000 55.000
+2018-01-01 23:30:00 user2 app2 53.000 85.000
+You have to create a class that has access to the logs/ directory and can answer questions like (***assume that for all kinds of queries user
+will be given***):
+query1: from_datetime=2018-01-01 00:00:00&to_datetime=2018-01-05 00:00:00&user=userX (The result should be one record for
+every time interval)
+query2: from_datetime=2018-01-01 00:00:00&to_datetime=2018-01-05 00:00:00&user=userX&app=app1 (The result should be one
+record for every time interval)
+query3: from_datetime=2018-01-01 00:00:00&to_datetime=2018-01-05 00:00:00&user=userX&group_by=app (expected N records
+per time interval, the number of distinct apps used by the user during each interval)
+results can be aggregated at 30 min or 1 day intervals, by the granularity parameter Enum[30min, 1day]query1&granularity=30min
+query1&granularity=1day
+You can create the directory logs and small sample files for the exercize.
+Assume that if the script is to put to actual use, you'd have the given guarantees:
+files are stored sorted by the user column
+estimated file size for each file is ~25G
+estimated query time should be < 100ms
+the aggregation function for the metrics is always summation (adding the values together)
+** your goal is to find the most memory and IO efficient algorithm.
+Notes:
+Try using built-in Python libs and capabilities (as opposed to third party tools like dataframes)
+Assume that in real life use rows matching a particular user will always be small enough, but the total of rows can be huge (larger
+than memory). Your program should be able to handle that.
+Clear program structure is appreciated.
+EXAMPLES
+Given the datasets:
+/logs/XXXX-XX-01.log
+timestamp,user,app,metric1
+XXXX-XX-01 13:30:00,user1,app1,7
+XXXX-XX-01 12:30:00,user1,app2,5
+XXXX-XX-01 14:30:00,user1,app3,4
+XXXX-XX-01 11:30:00,user1,app1,12
+XXXX-XX-01 17:30:00,user1,app2,2
+XXXX-XX-01 11:30:00,user1,app3,11
+XXXX-XX-01 12:30:00,user2,app2,999999
+/logs/XXXX-XX-03.log
+timestamp,user,app,metric1
+XXXX-XX-03 11:30:00,user1,app1,11
+XXXX-XX-03 11:30:00,user1,app2,11
+XXXX-XX-03 12:30:00,user1,app2,11
+Example1:
+query: from_datetime=XXXX-XX-01&to_datetime=XXXX-XX-02&user=user1&granularity=30min
+result:
+user1, XXXX-XX-01 13:30:00, 7
+user1, XXXX-XX-01 12:30:00, 5
+user1, XXXX-XX-01 14:30:00, 4
+user1, XXXX-XX-01 11:30:00, 23
+user1, XXXX-XX-01 17:30:00, 2
+Example2:
+query: from_datetime=XXXX-XX-01&to_datetime=XXXX-XX-03&user=user1&granularity=1day
+result:user1, XXXX-XX-01 00:00:00, 41
+user1, XXXX-XX-03 00:00:00, 33
+Example3:
+query: from_datetime=XXXX-XX-01&to_datetime=XXXX-XX-02&user=user1&granularity=1day&group_by=app
+result:
+user1, app1, XXXX-XX-01 00:00:00, 19
+user1, app2, XXXX-XX-01 00:00:00, 7
+user1, app3, XXXX-XX-01 00:00:00, 15

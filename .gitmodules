@@ -1,0 +1,6 @@
+[submodule "folder1"]
+	path = folder1
+	url = ./folders/folder1
+[submodule "folder4"]
+	path = folder4
+	url = ./folders/folder4

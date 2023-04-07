@@ -1,0 +1,54 @@
+Exercise 1
+Provide a shell script that takes a path as argument and
+• prints the size of each directory under the path which
+◦ contains a .git directory
+◦ uses more than 1 GB
+• sends to syslog the time needed per directory printed
+
+Exercise 2
+Given 48 csv files with columns “user”,”application” and 48 csv files with columns “user”,”device”
+available per day, corresponding to 30 minute intervals, eg.
+==> user.application.2020-01-16-00-00.csv <==
+user1,app1
+user1,app2
+==> user.application.2020-01-16-00-30.csv <==
+user1,app1
+user2,app4
+user4,app5
+==> user.device.2020-01-16-00-00.csv <==
+user1,device1
+user1,device3
+==> user.device.2020-01-16-00-30.csv <==
+user9,decvice8
+user1,devcice2
+provide a shell script that takes a date as argument and
+• writes 1 csv file with columns “application”,”number of unique users”
+• writes 1 csv file with columns “device”,”number of unique users”
+• writes 1 csv file with columns “application”,“device” with all possible unique application
+and device combinations assuming that each user has used all his apps on all his devices
+using data from the provided date’s 30-minute csv files as input.
+Assume the input files are several GB each.
+
+Exercise 3
+Given daily csv files with columns “user”,”application” available for several consecutive days, eg.
+==> user.application.2020-01-16.csv <==
+user1,app1
+user1,app2
+==> user.application.2020-01-17.csv <==
+user4,app5
+user6,app3
+==> user.application.2020-01-18.csv <==
+user1,app1
+user1,app2
+user2,app2
+user5,app2
+==> user.application.2020-01-19.csv <==
+user1,app1
+user1,app2
+user3,app3
+==> user.application.2020-01-20.csv <==
+user8,app9
+provide a shell script that takes as argument a date and an application and prints the list of users
+who were using the provided application every day up to the provided date and never used it
+again starting from the the provided date. Assume the daily csv files are several GB each.
+

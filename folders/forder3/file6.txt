@@ -1,0 +1,17 @@
+Chapter 4: Inventory
+We remain within the retail industry for the second case study but turn your attention to another business process. This chapter introduces the enterprise data warehouse bus architecture and the bus matrix with conformed dimensions. These
+concepts are critical to anyone looking to construct a DW/BI architecture that is
+integrated and extensible. We also compare the three fundamental types of fact
+tables: transaction, periodic snapshot, and accumulating snapshot.
+Chapter 5: Procurement
+This chapter reinforces the importance of looking at your organization’s value chain
+as you plot your DW/BI environment. We also explore a series of basic and advanced
+techniques for handling slowly changing dimension attributes; we’ve built on the
+long-standing foundation of type 1 (overwrite), type 2 (add a row), and type 3 (add
+a column) as we introduce readers to type 0 and types 4 through 7.Introduction xxxi
+Chapter 6: Order Management
+In this case study, we look at the business processes that are often the first to be
+implemented in DW/BI systems as they supply core business performance metrics—what are we selling to which customers at what price? We discuss dimensions
+that play multiple roles within a schema. We also explore the common challenges
+modelers face when dealing with order management information, such as header/
+line item considerations, multiple currencies or units of measure, and junk dimensions with miscellaneous transaction indicators.

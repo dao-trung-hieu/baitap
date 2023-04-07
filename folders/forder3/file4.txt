@@ -1,0 +1,18 @@
+Be forewarned that we deviate from the case study approach in Chapter 2: Kimball
+Dimensional Modeling Techniques Overview. Given the broad industry acceptance
+of the dimensional modeling techniques invented by the Kimball Group, we have
+consolidated the official listing of our techniques, along with concise descriptions
+and pointers to more detailed coverage and illustrations of these techniques in
+subsequent chapters. Although not intended to be read from start to finish like the
+other chapters, we feel this technique-centric chapter is a useful reference and can
+even serve as a professional checklist for DW/BI designers.
+With the exception of Chapter 2, the other chapters of this book build on one
+another. We start with basic concepts and introduce more advanced content as the
+book unfolds. The chapters should be read in order by every reader. For example, it
+might be difficult to comprehend Chapter 16: Insurance, unless you have read the
+preceding chapters on retailing, procurement, order management, and customer
+relationship management.
+Those of you who have read the last edition may be tempted to skip the first
+few chapters. Although some of the early fact and dimension grounding may be
+familiar turf, we don’t want you to sprint too far ahead. You’ll miss out on updates
+to fundamental concepts if you skip ahead too quickly

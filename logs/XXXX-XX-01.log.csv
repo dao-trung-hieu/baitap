@@ -1,0 +1,8 @@
+timestamp,user,app,metric1
+XXXX-XX-01 13:30:00,user1,app1,7
+XXXX-XX-01 12:30:00,user1,app2,5
+XXXX-XX-01 14:30:00,user1,app3,4
+XXXX-XX-01 11:30:00,user1,app1,12
+XXXX-XX-01 17:30:00,user1,app2,2
+XXXX-XX-01 11:30:00,user1,app3,11
+XXXX-XX-01 12:30:00,user2,app2,999999
