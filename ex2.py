@@ -29,7 +29,7 @@ class Query:
         result = []
         for file in log_files:
             query = get_query(file, self.user, group_by_app, granularity)
-            resut.extend(query)
+            result.extend(query)
         return result
 
     def __str__(self):
